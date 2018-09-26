@@ -1,0 +1,67 @@
+import java.util.Scanner;
+public class Round1
+{
+    public static void main(String[]args)
+    {
+       int triplet;
+       Scanner s = new Scanner(System.in);
+       double tally;
+       int round2 = 1;
+       int input;
+       int times;
+       int random1 = 0;
+       int random2 = 0;
+       int random3 = 1;
+       int random;
+    
+
+       System.out.println("Type 1 to Roll");
+       input = s.nextInt();
+    while (input == 1){
+       if (input == 1){
+       random1 = (int)(Math.random()*6 + 1);
+       random2 = (int)(Math.random()*6 + 1);
+       random3 =(int) (Math.random()*6 + 1); 
+       System.out.println(random1);
+       System.out.println(random2);
+       System.out.println(random3);
+
+       }
+       if (random1 == random2 && random2 == random3){
+           tally = random1 + random2;
+           times = random1;
+           break;
+       }
+      }
+      tally = random1 + random2;
+      times = random1;
+      triplet = random1;
+       System.out.println("your triplet is "+ random1+"'s");
+       System.out.println("Round2");
+       while(times > 0){
+        random = (int)(Math.random()*6 + 1);
+        System.out.println(random);
+        round2 = round2 * random;
+        times = times - 1;
+       }
+       tally = tally + round2;
+       System.out.println(tally);
+       System.out.println("Round 3");
+       for(int thousand = 0; thousand <= 1000; thousand++){
+        random1 = (int)(Math.random()*6 + 1);
+        random2 = (int)(Math.random()*6 + 1);
+        random3 =(int) (Math.random()*6 + 1);
+        if(random1 == random2 && random2 == random3 && random3 == triplet){
+          double pow1 = Math.pow(3,thousand);
+           tally = (tally * 3) + pow1;
+        }
+        if (random1 == random2 && random2 == random3){
+           double pow1 = Math.pow(3,thousand);
+            tally = random1 + pow1;
+        }  
+        
+
+       }
+       System.out.println(tally);
+    }
+}
