@@ -5,7 +5,7 @@ public class Round1
     {
        int triplet;
        Scanner s = new Scanner(System.in);
-       double tally;
+       double tally = 0;
        int round2 = 1;
        int input;
        int times;
@@ -13,7 +13,10 @@ public class Round1
        int random2 = 0;
        int random3 = 1;
        int random;
+       double power = 1;
+       double total = 0;
     
+//Round1
 
        System.out.println("Type 1 to Roll");
        input = s.nextInt();
@@ -27,16 +30,19 @@ public class Round1
        System.out.println(random3);
 
        }
-       if (random1 == random2 && random2 == random3){
+    if (random1 == random2 && random2 == random3){
            tally = random1 + random2;
            times = random1;
            break;
        }
       }
-      tally = random1 + random2;
-      times = random1;
-      triplet = random1;
-       System.out.println("your triplet is "+ random1+"'s");
+    tally = random1 + random2;
+    times = random1;
+    triplet = random1;
+    System.out.println("your triplet is "+ random1+"'s");
+       
+//Round2
+
        System.out.println("Round2");
        while(times > 0){
         random = (int)(Math.random()*6 + 1);
@@ -46,22 +52,33 @@ public class Round1
        }
        tally = tally + round2;
        System.out.println(tally);
-       System.out.println("Round 3");
-       for(int thousand = 0; thousand <= 1000; thousand++){
-        random1 = (int)(Math.random()*6 + 1);
-        random2 = (int)(Math.random()*6 + 1);
-        random3 =(int) (Math.random()*6 + 1);
-        if(random1 == random2 && random2 == random3 && random3 == triplet){
-          double pow1 = Math.pow(3,thousand);
-           tally = (tally * 3) + pow1;
-        }
-        if (random1 == random2 && random2 == random3){
-           double pow1 = Math.pow(3,thousand);
-            tally = random1 + pow1;
-        }  
-        
+       
+//round3
 
+       System.out.println("Round 3");
+       random1 = -1;
+       power = 1;
+       while(!(random1 == random2 && random2 == random3)){
+           random1 = (int) (Math.random()*6 + 1);
+           random2 = (int) (Math.random()*6 + 1);
+           random3 = (int) (Math.random()*6 + 1);
+           tally = tally + power;
+           power = power * 3;
        }
-       System.out.println(tally);
+       if(triplet == random1){
+           tally = tally * tally * tally;
+       }
+       else {
+           tally = random1 + power;
+       }
+   
+    System.out.println("You scored " + tally);
+    total = total + tally;
+   
+   
+   
+   System.out.println("Average score = " + (total/1000.0));
+
     }
 }
+   
