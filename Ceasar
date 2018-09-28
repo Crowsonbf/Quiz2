@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+
+class Ceasar{
+	public static void main(String[] args){
+        
+        String codeword = "";
+        String word = "";
+        String end = "";
+        int shift;
+        int letter;
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter message: ");
+        word = s.nextLine();
+
+		System.out.println("code word:");
+	    codeword = s.nextLine();
+        
+		for(int p = 0, i = 0; p < word.length(); p++, i++){
+            
+//i counts up code word letters, P is the message
+//i is reset to restart the codeword
+            if(i > codeword.length()-1){
+                i = 0;
+            }
+// -96 so that a is 1 instead of 97
+            shift = (int) codeword.charAt(i) - 96;
+//letter is the numeric ascii value
+            letter = (int) word.charAt(p) + shift;
+// No wierd symbols 
+			if(letter > 122){
+				letter = letter - 26;
+            }
+// adding each letter to the string
+            end = end + ((char) letter);
+        }
+        System.out.println(end);
+	}
+}
